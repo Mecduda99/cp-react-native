@@ -33,70 +33,96 @@ const FinanciamentoSimulator = () => {
 
   return (
     <View style={styles.container}>
-      <Text>Dados Pessoais:</Text>
-      <TextInput
+      <Text style={styles.txtTitle}>Dados Pessoais:</Text>
+      <div style={styles.campo}>
+        <Text style={styles.txtCampo}>Nome</Text>
+        <TextInput
+          style={styles.input}
+          value={nome}
+          onChangeText={setNome}
+         />
+      </div>
+      <div style={styles.campo}>
+        <Text style={styles.txtCampo}>CPF</Text>
+        <TextInput
         style={styles.input}
-        placeholder="Nome"
-        value={nome}
-        onChangeText={setNome}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="CPF"
         value={cpf}
         onChangeText={setCpf}
       />
-      <TextInput
+      </div>
+
+      <div style={styles.campo}>
+        <Text style={styles.txtCampo}>E-mail</Text>
+        <TextInput
         style={styles.input}
-        placeholder="E-mail"
         value={email}
         onChangeText={setEmail}
       />
-      <TextInput
+      </div>
+
+      <div style={styles.campo}>
+        <Text style={styles.txtCampo}>Telefone</Text>
+        <TextInput
         style={styles.input}
-        placeholder="Telefone"
         value={telefone}
         onChangeText={setTelefone}
       />
-      <TextInput
+      </div>
+
+      <div style={styles.campo}>
+        <Text style={styles.txtCampo}>Data de Nascimento</Text>
+        <TextInput
         style={styles.input}
-        placeholder="Data de Nascimento"
         value={dataNascimento}
         onChangeText={setDataNascimento}
       />
+      </div>
+      
+      <Text style={styles.txtTitle}>Dados Financeiros:</Text>
 
-      <Text>Dados Financeiros:</Text>
-      <TextInput
+      <div style={styles.campo}>
+        <Text style={styles.txtCampo}>Valor da compra</Text>
+        <TextInput
         style={styles.input}
-        placeholder="Valor da compra"
         value={valorCompra}
         onChangeText={setValorCompra}
         keyboardType="numeric"
       />
-      <TextInput
+      </div>
+
+      <div style={styles.campo}>
+        <Text style={styles.txtCampo}>Taxa de juros (%)</Text>
+        <TextInput
         style={styles.input}
-        placeholder="Taxa de juros (%)"
         value={taxaJuros}
         onChangeText={setTaxaJuros}
         keyboardType="numeric"
       />
-      <TextInput
+      </div>
+      
+      <div style={styles.campo}>
+        <Text style={styles.txtCampo}>Número de parcelas</Text>
+        <TextInput
         style={styles.input}
-        placeholder="Número de parcelas"
         value={numeroParcelas}
         onChangeText={setNumeroParcelas}
         keyboardType="numeric"
       />
-      <TextInput
+      </div>
+      
+      <div style={styles.campo}>
+        <Text style={styles.txtCampo}>Valor de entrada</Text>
+        <TextInput
         style={styles.input}
-        placeholder="Valor de entrada"
         value={valorEntrada}
         onChangeText={setValorEntrada}
         keyboardType="numeric"
       />
+      </div>
 
-      <Button title="Calcular" onPress={calcularParcelas} />
-
+      
+      <button onPress={calcularParcelas} style={styles.button} >Calcular</button>
+     
       <Modal
         visible={modalVisible}
         animationType="slide"
@@ -124,18 +150,39 @@ const FinanciamentoSimulator = () => {
 };
 
 const styles = StyleSheet.create({
+  button: {
+    backgroundColor: '#9F3752',
+    borderRadius: '10px',
+    color: 'white',
+    padding: '15px'
+    
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
   },
+  campo: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  txtTitle: {
+    color: '#CE6689',
+    fontWeight :'Bold',
+    marginBottom: '1%'
+  },
+  txtCampo:{
+    color: '#CE6689',
+    marginBottom: '2%'
+  },
   input: {
     width: '100%', // Adicionado para garantir que o input ocupe toda a largura
     height: 40,
-    borderColor: 'gray',
+    borderColor: '#CE6689',
+    borderRadius: '10px',
     borderWidth: 1,
-    marginBottom: 10,
+    marginBottom: 15,
     paddingHorizontal: 10,
   },
   modalContainer: {
@@ -150,6 +197,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
   },
+
 });
 
 export default FinanciamentoSimulator;
